@@ -1,1 +1,3 @@
 PS D:\xampp\htdocs\Denzel_Projects\Laravel_Projects> # Using starter kits on another laravel project
+PS D:\xampp\htdocs\Denzel_Projects\Laravel_Projects\example_app_2> # make mode Category -m and Post -m
+PS D:\xampp\htdocs\Denzel_Projects\Laravel_Projects\example_app_2> # migrate
