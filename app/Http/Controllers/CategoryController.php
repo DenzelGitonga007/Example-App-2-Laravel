@@ -61,7 +61,8 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        // Return the edit page
+        return view('categories.edit', compact('category'));
     }
 
     /**
@@ -73,7 +74,11 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $category -> update([
+            'name' => $request->input('name')
+        ]);
+        // Return the index view
+        return redirect()->route('categories.index');
     }
 
     /**

@@ -14,8 +14,8 @@
                         <thead>
                             <tr>
                                 <th>Name</th>
-                            </tr>
                                 <th>Actions</th>
+                            </tr>
                         </thead>
                         <tbody>
                             @foreach($categories as $category)
