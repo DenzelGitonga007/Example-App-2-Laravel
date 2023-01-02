@@ -28,7 +28,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        // Return the edit page
+        return view('categories.create');
     }
 
     /**
@@ -39,7 +40,12 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Save the data in the db
+        Category::create([
+            'name' => $request -> input('name')
+        ]);
+        // Redirect
+        return redirect()->route('categories.index');
     }
 
     /**
