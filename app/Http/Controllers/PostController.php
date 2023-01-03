@@ -14,8 +14,10 @@ class PostController extends Controller
      */
     public function index()
     {
+        // Get the posts from the database
+        $posts = Post::all();
         //Return the posts on index page
-        return view('posts.index');
+        return view('posts.index', compact('posts'));
     }
 
     /**
@@ -25,7 +27,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        // Return the create view
+        return view('posts.create');
     }
 
     /**
@@ -58,7 +61,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        // Return the edit view
+        return view('posts.edit', compact('posts'));
     }
 
     /**
