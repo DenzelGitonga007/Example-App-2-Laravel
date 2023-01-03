@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -34,3 +35,6 @@ require __DIR__.'/auth.php';
 // Return the category resources/crud
 Route::resource('categories', CategoryController::class)
 ->middleware(['auth', 'verified']);
+
+// Posts routes
+Route::resource('posts', PostController::class);
