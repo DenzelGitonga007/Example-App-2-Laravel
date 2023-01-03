@@ -13,9 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('categories', function (Blueprint $table) {
-            //Additional fields
-            // $table->string('name');
+        Schema::table('posts', function (Blueprint $table) {
+            // Additional fields to posts table
+            $table->string('title');
+            $table->text('post_text');
+            $table->foreignId('category_id')->constrained();
         });
     }
 
@@ -26,8 +28,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('categories', function (Blueprint $table) {
-            
+        Schema::table('posts', function (Blueprint $table) {
+            //
         });
     }
 };

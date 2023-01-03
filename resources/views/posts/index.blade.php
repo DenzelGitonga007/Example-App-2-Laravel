@@ -17,6 +17,7 @@
                         <thead>
                             <tr>
                                 <th>Title</th>
+                                <th>Post Text</th>
                                 <th>Category</th>
                                 <th>Actions</th>
                             </tr>
