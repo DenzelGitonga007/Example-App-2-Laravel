@@ -32,4 +32,5 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 // Return the category resources/crud
-Route::resource('categories', CategoryController::class);
+Route::resource('categories', CategoryController::class)
+->middleware(['auth', 'verified']);
