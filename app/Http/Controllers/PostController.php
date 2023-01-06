@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -27,8 +28,11 @@ class PostController extends Controller
      */
     public function create()
     {
+        // Get the categories
+        $categories = Category::all();
         // Return the create view
-        return view('posts.create');
+        return view('posts.create', compact('categories'));
+        
     }
 
     /**
@@ -39,7 +43,14 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Get the input values
+        Post::create([
+            'title' => $request ->input('title'),
+            'post_text' => $request -> input('post_text'),
+            'category_id' => $request -> input('category_id')
+        ]);
+        // Redirect to index
+        return redirect()->route('posts.index');
     }
 
     /**
