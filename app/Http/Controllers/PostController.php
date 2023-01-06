@@ -32,7 +32,7 @@ class PostController extends Controller
         $categories = Category::all();
         // Return the create view
         return view('posts.create', compact('categories'));
-        
+
     }
 
     /**
@@ -72,8 +72,10 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+        // Find the categories
+        $categories = Category::all();
         // Return the edit view
-        return view('posts.edit', compact('posts'));
+        return view('posts.edit', compact('post', 'categories'));
     }
 
     /**
@@ -86,6 +88,12 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         //
+        $post -> update([
+            'title' =>  $request->input('title'),
+            'post_text' => $request->input('post_text'),
+            'category_id' => $request->input('category_id')
+        ]);
+        return redirect()->route('posts.index');
     }
 
     /**
