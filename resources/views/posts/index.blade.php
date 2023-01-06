@@ -31,7 +31,14 @@
                                 <a href="{{ route('posts.edit', $post) }}">
                                     Edit
                                 </a>
-                                
+                                <!-- Delete -->
+                                <form method="POST" action="{{ route('posts.destroy', $post) }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" onclick="return confirm('Are you sure you want to delete {{ $post->title }}')">
+                                        Delete
+                                    </button>
+                                </form>
                             </td>
                         </tbody>
                         @endforeach
