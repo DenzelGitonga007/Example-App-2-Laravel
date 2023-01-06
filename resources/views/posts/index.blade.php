@@ -24,7 +24,7 @@
                         @foreach ($posts as $post)
                         <tbody>
                             <td>{{ $post->title }}</td>
-                            <td>???</td>
+                            <td>{{ $post->category->name }}</td>
                             <!-- Actions -->
                             <td>
                                 <!-- Edit -->
