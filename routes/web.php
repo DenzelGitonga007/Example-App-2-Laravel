@@ -20,9 +20,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Middleware for categories
+Route::group(['middleware' => ['auth', 'verified']], function() {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+    // Return the category resources/crud
+    Route::resource('categories', CategoryController::class);
+    
+});
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -32,9 +40,7 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-// Return the category resources/crud
-Route::resource('categories', CategoryController::class)
-->middleware(['auth', 'verified']);
+
 
 // Posts routes
 Route::resource('posts', PostController::class);
