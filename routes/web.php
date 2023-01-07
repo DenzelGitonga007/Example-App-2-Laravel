@@ -21,15 +21,17 @@ Route::get('/', function () {
 });
 
 // Middleware for categories
-Route::group(['middleware' => ['auth', 'verified']], function() {
+Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-    // Return the category resources/crud
-    Route::resource('categories', CategoryController::class)
-    ->middleware('is_admin');
-    // Posts routes
-    Route::resource('posts', PostController::class)->middleware('is_admin');
+    // Middleware for both categories and posts
+    Route::group(['middleware' => ['is_admin']], function () {
+        // Return the category resources/crud
+        Route::resource('categories', CategoryController::class);
+        // Posts routes
+        Route::resource('posts', PostController::class);
+    });
     
 });
 
