@@ -26,7 +26,10 @@ Route::group(['middleware' => ['auth', 'verified']], function() {
         return view('dashboard');
     })->name('dashboard');
     // Return the category resources/crud
-    Route::resource('categories', CategoryController::class);
+    Route::resource('categories', CategoryController::class)
+    ->middleware('is_admin');
+    // Posts routes
+    Route::resource('posts', PostController::class)->middleware('is_admin');
     
 });
 
@@ -42,5 +45,3 @@ require __DIR__.'/auth.php';
 
 
 
-// Posts routes
-Route::resource('posts', PostController::class);

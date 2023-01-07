@@ -16,6 +16,10 @@ class IsAdminMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
+        // If user is not admin
+        if (!auth()->user()->is_admin) {
+            abort(code:403);
+        }
         return $next($request);
     }
 }
