@@ -16,7 +16,8 @@ class PostController extends Controller
     public function index()
     {
         // Get the posts from the database
-        $posts = Post::all();
+        // $posts = Post::all();
+        $posts = Post::with('category')->get();
         //Return the posts on index page
         return view('posts.index', compact('posts'));
     }
